@@ -1,5 +1,6 @@
 "use client";
 import { CustomeButtonProps } from "@/types";
+import Image from "next/image";
 import React from "react";
 
 const CustomeButton = ({
@@ -7,6 +8,8 @@ const CustomeButton = ({
   containerStyles,
   btnType,
   handleClick,
+  textStyle,
+  rightIcon,
 }: CustomeButtonProps) => {
   return (
     <button
@@ -15,7 +18,17 @@ const CustomeButton = ({
       className={`custom-btn ${containerStyles}`}
       onClick={handleClick}
     >
-      {title}
+      <span className={`flex-1 ${textStyle}`}>{title}</span>
+      {rightIcon && (
+        <div className="relative w-6 h-6 ">
+          <Image
+            src={rightIcon}
+            alt="right icon"
+            fill
+            className="object-contain"
+          />
+        </div>
+      )}
     </button>
   );
 };
